@@ -59,8 +59,11 @@ Add an explanation of the algorithm and how it works. Make sure to include detai
 ``sudo ldconfig``
 
 11. Once this is finished, you will be able to run the snake project correctly. 
-12. Start by changing directories into **jetson-inference/python/training/classification/data**.
-13. Download this dataset that holds all the snake pictures
+12.Download this dataset that holds all the snake pictures and transfer it from your host computer to your nano using the command below. Another simplier way to transfer the file into your nano is by using Visual Studio Code and by dragging and dropping it into the  **jetson-inference/python/training/classification/data** directory. 
+
+``scp venomous_nonvenomous <nanousername>@192.168.55.1:/home/jetson-inference/python/traing/classification/data``
+
+13. Change directories into **jetson-inference/python/training/classification/data** to check if the venomous_nonvenomous file is there. 
 14. Go back to to the jetson-inference directory and run ``./docker/run.sh`` to run the docker container.
 15. Run the training script to re-train the network. The model-dir arguement is where the model should be saved and where the data is. You should immediately start to see output, but it will take a long time to finish running. 
 
@@ -88,7 +91,7 @@ Look in **jetson-inference/python/training/classification/venomous_nonvenomous**
   
 22. Run this command to see how it operates on an image from the nonvenomous snake folder:
   
-``imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/nonvenomous/calimountkingtest1.jpg nonvenomous.jpg``
+``imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/nonvenomous/calimountkingtest1.jpeg nonvenomous.jpg``
 
 23. Use scp to view the image on your host computer:
 
