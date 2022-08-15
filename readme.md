@@ -42,7 +42,31 @@ make
 sudo make install
 sudo ldconfig
 11. Once this is finished, you will be able to run the snake project correctly. 
+12. Start by changing directories into jetson-inference/python/training/classification/data.
+13. Download the custom data set that holds all the snake pictures
+14. Go back to to the jetson-inference directory and run ./docker/run.sh to run the docker container.
+15. Run the training script to re-train the network. The model-dir arguement is where the model should be saved and where the data is. You should immediately start to see output, but it will take a long time to finish running. 
+python3 train.py --model-dir=models/venomous_nonvenomous data/venomous_nonvenomous
+You can stop the running at any time using Ctl+C. Try to wait at least 5 epochs before stopping the running. 
+16. The ResNet-18 modedl is now retrained and the next step is to convert it into ONNX format. This model simplifies the process of sharing models between tools. PyTorch comes with built-in support, so follow the next steps to export your model. Start by making sure you're in the docker container and in the jetson-inference/python/training/classification directory. 
+17. Run the ONNX export script
+python3 onnx_export.py --model-dir=models/venomous_nonvenomous
+Look in jetson-inference/python/training/classification/venomous_nonvenomous to check if the new re-trained model called resnet19.onnx is there. 
+18. Next, you can start processing images through your re-trained network. Exit the docker container by pressing Ctl+D
+19. On your nano, make sure you are in the jetson-inference/python/training/classification directory.
+20. Use ls models/venomous_nonvenomous to make sure the resnet18.onnx file, which is the model, is on the nano.
+21. Set the NET and DATASET variables
+NET=models/venomous_nonvenomous
+DATASET=data/venomous_nonvenomous
+22. Run this command to see how it operates on an image from the nonvenomous snake folder:
+imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/nonvenomous/calimountkingtest1.jpg nonvenomous.jpg
+23. Use scp to view the image on your host computer:
+If you're on Windows, use: scp <nanousername>@192.168.55.1:/home/<nanousername>/jetson-inference/python/training/classification/nonvenomous.jpg C:\Users\<hostusername>\Desktop
+If you're on Mac, use: scp <nanousername>@192.168.55.1:/home/<nanousername>/jetson-inference/python/training/classification/nonvenomous.jpg ./
+The image should show up looking like this: 
 
+
+That's it! 
 
 
 [View a video explanation here](video link)
