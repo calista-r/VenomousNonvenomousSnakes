@@ -1,6 +1,6 @@
-# Project Name
+Venomous Snake Avoider
 
- Add short description of project here > 
+My project's purpose is to help people who like to hike, specifically in California, avoid snakes that have venom that are harmful for humans. The machine uses the Resnet-18 network, which is retrained with images of the most common venomous and nonvenomous snakes in California, to detect and tell the person whether the snake shown in the image is venomous or nonvenomous. 
 
 ![add image descrition here](direct image link here)
 
