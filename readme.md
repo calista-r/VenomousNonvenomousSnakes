@@ -98,6 +98,8 @@ If you're on Mac, use: ``scp <nanousername>@192.168.55.1:/home/<nanousername>/je
 
 The image should show up looking like this: 
 
+![nonvenomous1](https://user-images.githubusercontent.com/110637561/184724542-f6e131a5-27de-4917-bc85-22b52b5187b1.jpg)
+
 
 That's it! 
 
