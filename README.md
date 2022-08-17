@@ -6,7 +6,7 @@ My project's purpose is to help people who like to hike, specifically in Califor
 
 ## The Algorithm
 
-Add an explanation of the algorithm and how it works. Make sure to include details about how the code works, what it depends on, and any other relevant info. Add images or other descriptions for your project here.
+My project uses image classification to tell which of California's most common snakes are venomous, and which are nonvenomous. The images are from a custom dataset. It uses py.torch to train the data. After putting an image through the ResNet.18 network, it will add the classification and the percent confidence the computer has that the classification is correct on top of the image. You will then be able to view the image with the classification and confidence percentage through the host computer using scp. 
 
 ## Materials
 
