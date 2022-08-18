@@ -115,3 +115,6 @@ The image should show up looking like this:
 
 That's it!
 
+## Video Demonstration
+
+https://youtu.be/k3e_IP2KVMc 
